@@ -1,0 +1,32 @@
+name: Build poi feature
+
+on:
+  pull_request:
+    types: [opened, edited]
+    branches: 
+      - '**'
+    paths:
+      - 'apis/poi/**'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    
+    - uses: actions/checkout@v2
+      with:         
+        ref: ${{ github.sha }}
+        fetch-depth: 0
+    
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.301
+    
+    - name: Build
+      run: dotnet build apis/poi/poi.sln --configuration Release
+      
+    - name: Test
+      run: dotnet test apis/poi/poi.sln --no-restore --verbosity normal
