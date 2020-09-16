@@ -5,10 +5,14 @@ on:
     branches:
       - master
       - 'apis/poi/web/**'
+    paths:
+      - 'apis/poi/web/**'
     
   pull_request:
     branches:
       - master
+      - 'apis/poi/web/**'
+    paths:
       - 'apis/poi/web/**'
 
 jobs:
