@@ -32,3 +32,15 @@ jobs:
       run: dotnet build apis/poi/web/poi.csproj --configuration Release --no-restore
     - name: Test
       run: dotnet test apis/poi/tests/UnitTests/UnitTests.csproj --no-restore --verbosity normal
+    - name: The job has failed
+      if: ${{ failure() }}
+      run: |
+        curl --request POST \
+        --url: https://api.github.com/repos/${{ github.repository }}/issues \
+        --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+        --header 'content-type: application/json' \
+        --data '{
+         "title": "BUILD FAILURE for commit: ${{ github.sha }}",
+         "body": "This issue was automagically created by the GitHub Action workflow **${{ github.workflow }}**. \n\n The commit hash was: _${{ github.sha }}"
+         }'
+    
