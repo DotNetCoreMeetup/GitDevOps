@@ -9,6 +9,7 @@ on:
   pull_request:
     branches:
       - master
+      - 'apis/poi/web/**'
 
 jobs:
   build:
