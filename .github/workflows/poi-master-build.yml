@@ -4,14 +4,12 @@ on:
   push:
     branches:
       - master
-      - 'apis/poi/web/**'
     paths:
       - 'apis/poi/web/**'
     
   pull_request:
     branches:
       - master
-      - 'apis/poi/web/**'
     paths:
       - 'apis/poi/web/**'
 
@@ -46,6 +44,6 @@ jobs:
         --header 'content-type: application/json' \
         --data '{
          "title": "BUILD FAILURE for commit: ${{ github.sha }}",
-         "body": "This issue was automagically created by the GitHub Action workflow **${{ github.workflow }}**. \n\n The commit hash was: _${{ github.sha }}"
+         "body": "This issue was automagically created by the GitHub Action workflow **${{ github.workflow }}**. \n\n The commit sha was: _${{ github.sha }}"
          }'
     
