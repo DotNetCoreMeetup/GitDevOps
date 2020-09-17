@@ -18,12 +18,6 @@ namespace poi.Controllers
             _context = context;
         }
 
-        [HttpGet]
-        public IActionResult GetRoot()
-        {
-            return Ok();
-        }
-
         [HttpGet(Name = "GetAllPOIs")]
         [Produces("application/json", Type = typeof(POI))]
         public List<POI> GetAll()
