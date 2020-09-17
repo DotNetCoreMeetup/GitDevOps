@@ -31,11 +31,8 @@ jobs:
     - name: Build
       run: dotnet build apis/poi/poi.sln --configuration Release --no-restore
     
-    - name: Unit Tests
-      run: dotnet test apis/poi/tests/UnitTests/UnitTests.csproj --no-restore --verbosity normal
-    
-    - name: Integration Tests
-      run: dotnet test apis/poi/tests/IntegrationTests/IntegrationTests.csproj --no-restore --verbosity normal
+    - name: Tests
+      run: dotnet test apis/poi/poi.sln --no-restore --verbosity normal
     
     - name: The job has failed
       if: ${{ failure() }}
