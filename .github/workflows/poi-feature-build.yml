@@ -25,8 +25,11 @@ jobs:
       with:
         dotnet-version: 2.1
     
-    - name: Build
-      run: dotnet build apis/poi/poi.sln --configuration Release
+    - name: Install dependencies
+      run: dotnet restore apis/poi/web/poi.csproj
       
-    - name: Test
-      run: dotnet test apis/poi/poi.sln --no-restore --verbosity normal
+    - name: Build
+      run: dotnet build apis/poi/web/poi.csproj --configuration Release --no-restore
+    
+    - name: Unit Tests
+      run: dotnet test apis/poi/tests/UnitTests/UnitTests.csproj --no-restore --verbosity normal
