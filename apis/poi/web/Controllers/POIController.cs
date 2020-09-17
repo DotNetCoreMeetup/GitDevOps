@@ -21,7 +21,7 @@ namespace poi.Controllers
         [HttpGet]
         public IActionResult GetRoot()
         {
-            return NotFound()
+            return NotFound();
         }
 
 
