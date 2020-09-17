@@ -19,7 +19,6 @@ namespace poi.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult GetRoot()
         {
             return NotFound();
