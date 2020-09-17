@@ -22,7 +22,7 @@ namespace poi.Controllers
         [Produces("application/json", Type = typeof(POI))]
         public List<POI> GetAll()
         {
-            return InternalServerError(); //_context.POIs.ToList();
+            return NotFound(); //_context.POIs.ToList();
         }
 
         [HttpGet("{ID}", Name = "GetPOIById")]
